@@ -7,7 +7,11 @@ $("#placesSearch")[0].value = "Бар";
 
 
 
+
 function funcSearch() {
+
+    $("#loading").show();
+
     var query = $("#placesSearch").val();
 
     var center = map.getCenter();
@@ -48,6 +52,7 @@ function funcSearch() {
             }
 
             lastQuery = query;
+            $("#loading").hide();
         });
 }
 
