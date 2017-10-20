@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VkHackathon", "VkHackathon\VkHackathon.csproj", "{FDE918A7-B1F5-43BF-A966-8E76295FADB6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SourceXML", "SourceXML", "{8B03B1B8-CB2F-4FDA-816A-D87EFAA4BDEB}"
+	ProjectSection(SolutionItems) = preProject
+		source Afisha\companies.xml = source Afisha\companies.xml
+		source Afisha\creations.xml = source Afisha\creations.xml
+		source Afisha\schedules_msk.xml = source Afisha\schedules_msk.xml
+		source Afisha\schedules_spb.xml = source Afisha\schedules_spb.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
