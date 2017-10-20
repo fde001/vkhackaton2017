@@ -18,15 +18,7 @@
         VK.callMethod("setTitle", "Changed title");
         $("#placesSearch")[0].value = "Бар";
 
-        function getZoneType(radius) {
-            if (radius < 300) {
-                return 1;
-            } else if (radius < 2400) {
-                return 2;
-            } else {
-                return 3;
-            }
-        }
+        
 
         function funcSearch(radius) {
 
@@ -38,20 +30,21 @@
             var bounds = myMap.getBounds();
             var radius = ymaps.coordSystem.geo.getDistance(center, bounds[0]) / 1.5;
 
-            VK.api("places.search",
-                { "latitude": center[0], "longitude": center[1], "count": 200, "radius": getZoneType(radius), "q": $("#placesSearch")[0].value },
+            findPlacesInVK(center, 200, radius, $("#placesSearch")[0].value, 
 
+            //VK.api("places.search",
+            //    { "latitude": center[0], "longitude": center[1], "count": 200, "radius": getZoneType(radius), "q": $("#placesSearch")[0].value },
                 function (data) {
 
-                  var places = data.response.filter(x => x.group_photo != null && x.distance < radius).slice(0, 100).sort((a, b) => a.distance - b.distance);
+                    var places = data.filter(x => x.photo != null).slice(0, 100);
 
                     for (var i = 0; i < places.length; i++) {
-                        $("#places").append(`<tr> <td><img src="${places[i].group_photo}"></td><td><a target="_blank" href="https://vk.com/club${places[i].group_id}">${places[i].title}</a></td><td>${places[i].distance} м</td></tr>`);
+                        $("#places").append(`<tr> <td><img src="${places[i].photo}"></td><td><a target="_blank" href="${places[i].url}">${places[i].title}</a></td><td>${places[i].distance} м</td></tr>`);
 
                         myMap.geoObjects
-                            .add(new ymaps.Placemark([places[i].latitude, places[i].longitude],
+                            .add(new ymaps.Placemark([places[i].lat, places[i].lon],
                                 {
-                                    balloonContent: `<img src="${places[i].group_photo}"><a target="_blank" href="https://vk.com/club${places[i].group_id}">${places[i].title}</a>`
+                                    balloonContent: `<img src="${places[i].photo}"><a target="_blank" href="${places[i].url}">${places[i].title}</a>`
                                 },
                                 {
                                     preset: 'islands#icon',
