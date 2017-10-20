@@ -36,6 +36,7 @@ function findPlacesInVK(coordinates, count, radius, query, callback) {
                         if (!grp) continue;
 
                         result.push({
+                            id: places[iCnt].pid,
                             lat: places[iCnt].latitude,
                             lon: places[iCnt].longitude,
                             url: `https://vk.com/club${grp.gid}`,

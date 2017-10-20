@@ -1,20 +1,20 @@
-﻿var myMap;
+﻿var map;
+var lastQuery="";
+
+
 VK.callMethod("setTitle", "Changed title");
 $("#placesSearch")[0].value = "Бар";
 
 
 
-function funcSearch(radius) {
+function funcSearch() {
+    var query = $("#placesSearch").val();
 
-    myMap.geoObjects.removeAll();
-    $("#places").empty();
-    radius = radius || 1;
-
-    var center = myMap.getCenter();
-    var bounds = myMap.getBounds();
+    var center = map.getCenter();
+    var bounds = map.getBounds();
     var radius = ymaps.coordSystem.geo.getDistance(center, bounds[0]) / 1.5;
 
-    findPlacesInVK(center, 200, radius, $("#placesSearch")[0].value,
+    findPlacesInVK(center, 400, radius, query,
         function (data) {
 
             var places = data.filter(x => x.photo != null &&
@@ -23,25 +23,37 @@ function funcSearch(radius) {
                     (!x.start && !x.end))
             );
 
-            for (var i = 0; i < places.length; i++) {
-                $("#places").append(`<tr> <td><img src="${places[i].photo}"></td><td><a target="_blank" href="${places[i].url}">${places[i].title}</a></td><td>${places[i].distance} м</td></tr>`);
-
-                myMap.geoObjects
-                    .add(new ymaps.Placemark([places[i].lat, places[i].lon],
-                        {
-                            balloonContent: `<img src="${places[i].photo}"><a target="_blank" href="${places[i].url}">${places[i].title}</a>`
-                        },
-                        {
-                            preset: 'islands#icon',
-                            iconColor: '#0095b6'
-                        }));
+            var $places = $("#places");
+            if (query != lastQuery) {
+                map.geoObjects.removeAll();
+                $places.empty();
             }
+
+            for (var i = 0; i < places.length; i++) {
+
+                if ($places.find('.' + places[i].id).length == 0) {
+
+                    $places.append(`<tr id="${places[i].id}"> <td><img src="${places[i].photo}"></td><td><a target="_blank" href="${places[i].url}">${places[i].title}</a></td><td>${places[i].distance} м</td></tr>`);
+
+                    map.geoObjects
+                        .add(new ymaps.Placemark([places[i].lat, places[i].lon],
+                            {
+                                balloonContent: `<img src="${places[i].photo}"><a target="_blank" href="${places[i].url}">${places[i].title}</a>`
+                            },
+                            {
+                                preset: 'islands#icon',
+                                iconColor: '#0095b6'
+                            }));
+                }
+            }
+
+            lastQuery = query;
         });
 }
 
 
 ymaps.ready(function () {
-    myMap = new ymaps.Map('map',
+    map = new ymaps.Map('map',
         {
             center: [59.935634, 30.325935],
             zoom: 15,
@@ -51,7 +63,7 @@ ymaps.ready(function () {
             searchControlProvider: 'yandex#search'
         });
 
-    myMap.events.add('boundschange', function (event) {
+    map.events.add('boundschange', function (event) {
         funcSearch();
     });
 
