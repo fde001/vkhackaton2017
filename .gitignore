@@ -1,2 +1,6 @@
 bin
 obj
+/.vs/VkHackathon/v15
+/.vs/vkhackaton2017/v15
+/.vs/slnx.sqlite
+/packages
