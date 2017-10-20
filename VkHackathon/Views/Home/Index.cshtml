@@ -38,24 +38,27 @@
             var bounds = myMap.getBounds();
             var radius = ymaps.coordSystem.geo.getDistance(center, bounds[0]) / 1.5;
 
-            VK.api("places.search", { "latitude": center[0], "longitude": center[1], "count": 200, "radius": getZoneType(radius), "q": $("#placesSearch")[0].value }, function (data) {
+            VK.api("places.search",
+                { "latitude": center[0], "longitude": center[1], "count": 200, "radius": getZoneType(radius), "q": $("#placesSearch")[0].value },
 
-                var places = data.response.filter(x => x.group_photo != null && x.distance < radius).slice(0, 100).sort((a, b) => a.distance - b.distance);
+                function (data) {
 
-                for (var i = 0; i < places.length; i++) {
-                    $("#places").append(`<tr> <td><img src="${places[i].group_photo}"></td><td><a target="_blank" href="https://vk.com/club${places[i].group_id}">${places[i].title}</a></td><td>${places[i].distance} м</td></tr>`);
+                  var places = data.response.filter(x => x.group_photo != null && x.distance < radius).slice(0, 100).sort((a, b) => a.distance - b.distance);
 
-                    myMap.geoObjects
-                        .add(new ymaps.Placemark([places[i].latitude, places[i].longitude],
-                            {
-                                balloonContent: `<img src="${places[i].group_photo}"><a target="_blank" href="https://vk.com/club${places[i].group_id}">${places[i].title}</a>`
-                            },
-                            {
-                                preset: 'islands#icon',
-                                iconColor: '#0095b6'
-                            }));
-                }
-            });
+                    for (var i = 0; i < places.length; i++) {
+                        $("#places").append(`<tr> <td><img src="${places[i].group_photo}"></td><td><a target="_blank" href="https://vk.com/club${places[i].group_id}">${places[i].title}</a></td><td>${places[i].distance} м</td></tr>`);
+
+                        myMap.geoObjects
+                            .add(new ymaps.Placemark([places[i].latitude, places[i].longitude],
+                                {
+                                    balloonContent: `<img src="${places[i].group_photo}"><a target="_blank" href="https://vk.com/club${places[i].group_id}">${places[i].title}</a>`
+                                },
+                                {
+                                    preset: 'islands#icon',
+                                    iconColor: '#0095b6'
+                                }));
+                    }
+                });
         }
 
 
@@ -63,7 +66,8 @@
             myMap = new ymaps.Map('map',
                 {
                     center: [59.935634, 30.325935],
-                    zoom: 15
+                    zoom: 15,
+                    controls: ["zoomControl", "geolocationControl", "rulerControl"]
                 },
                 {
                     searchControlProvider: 'yandex#search'
