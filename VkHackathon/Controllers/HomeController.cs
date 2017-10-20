@@ -13,6 +13,11 @@ namespace VkHackathon.Controllers
             return View();
         }
 
+        public ActionResult IndexMobile()
+        {
+            return View();
+        }
+
         
     }
 }
