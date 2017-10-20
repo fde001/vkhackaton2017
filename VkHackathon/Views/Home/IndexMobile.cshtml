@@ -2,78 +2,112 @@
     ViewBag.Title = "Home Page";
 }
 
-<input type="search" id="placesSearch" name="q" onsearch="funcSearch()">
-<button onclick="funcSearch()">Search</button>
+<div id="wrapper">
 
-<div id="map" style="margin-top: 20px;"></div>
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Start Bootstrap
+                </a>
+            </li>
+            <li>
+                <a href="#">Группы</a>
+            </li>
+            <li>
+                <a href="#">Мероприятия</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+        </div>
 
-<div id="vk_comments"></div>
+        <input type="search" id="placesSearch" name="q" onsearch="funcSearch()">
+        <button onclick="funcSearch()">Search</button>
 
-<table id="places" style="width:100%"></table>
+        <div id="map" style="margin-top: 20px;"></div>
+
+        <div id="vk_comments"></div>
+
+        <table id="places" style="width:100%"></table>
 
 
-<script type="text/javascript" language="javascript">
+        <script type="text/javascript" language="javascript">
 
-        var myMap;
-        VK.callMethod("setTitle", "Changed title");
-        $("#placesSearch")[0].value = "Бар";
+            var myMap;
+            VK.callMethod("setTitle", "Changed title");
+            $("#placesSearch")[0].value = "Бар";
 
-        function getZoneType(radius) {
-            if (radius < 300) {
-                return 1;
-            } else if (radius < 2400) {
-                return 2;
-            } else {
-                return 3;
+
+
+            function funcSearch(radius) {
+
+                myMap.geoObjects.removeAll();
+                $("#places").empty();
+                radius = radius || 1;
+
+                var center = myMap.getCenter();
+                var bounds = myMap.getBounds();
+                var radius = ymaps.coordSystem.geo.getDistance(center, bounds[0]) / 1.5;
+
+                findPlacesInVK(center, 200, radius, $("#placesSearch")[0].value,
+
+                    //VK.api("places.search",
+                    //    { "latitude": center[0], "longitude": center[1], "count": 200, "radius": getZoneType(radius), "q": $("#placesSearch")[0].value },
+                    function (data) {
+
+                        var places = data.filter(x => x.photo != null).slice(0, 100);
+
+                        for (var i = 0; i < places.length; i++) {
+                            $("#places").append(`<tr> <td><img src="${places[i].photo}"></td><td><a target="_blank" href="${places[i].url}">${places[i].title}</a></td><td>${places[i].distance} м</td></tr>`);
+
+                            myMap.geoObjects
+                                .add(new ymaps.Placemark([places[i].lat, places[i].lon],
+                                    {
+                                        balloonContent: `<img src="${places[i].photo}"><a target="_blank" href="${places[i].url}">${places[i].title}</a>`
+                                    },
+                                    {
+                                        preset: 'islands#icon',
+                                        iconColor: '#0095b6'
+                                    }));
+                        }
+                    });
             }
-        }
-
-        function funcSearch(radius) {
-
-            myMap.geoObjects.removeAll();
-            $("#places").empty();
-            radius = radius || 1;
-
-            var center = myMap.getCenter();
-            var bounds = myMap.getBounds();
-            var radius = ymaps.coordSystem.geo.getDistance(center, bounds[0]) / 1.5;
-
-            VK.api("places.search", { "latitude": center[0], "longitude": center[1], "count": 200, "radius": getZoneType(radius), "q": $("#placesSearch")[0].value }, function (data) {
-
-                var places = data.response.filter(x => x.group_photo != null && x.distance < radius).slice(0, 100).sort((a, b) => a.distance - b.distance);
-
-                for (var i = 0; i < places.length; i++) {
-                    $("#places").append(`<tr> <td><img src="${places[i].group_photo}"></td><td><a target="_blank" href="https://vk.com/club${places[i].group_id}">${places[i].title}</a></td><td>${places[i].distance} м</td></tr>`);
-
-                    myMap.geoObjects
-                        .add(new ymaps.Placemark([places[i].latitude, places[i].longitude],
-                            {
-                                balloonContent: `<img src="${places[i].group_photo}"><a target="_blank" href="https://vk.com/club${places[i].group_id}">${places[i].title}</a>`
-                            },
-                            {
-                                preset: 'islands#icon',
-                                iconColor: '#0095b6'
-                            }));
-                }
-            });
-        }
 
 
-        ymaps.ready(function () {
-            myMap = new ymaps.Map('map',
-                {
-                    center: [59.935634, 30.325935],
-                    zoom: 15
-                },
-                {
-                    searchControlProvider: 'yandex#search'
+            ymaps.ready(function () {
+                myMap = new ymaps.Map('map',
+                    {
+                        center: [59.935634, 30.325935],
+                        zoom: 15,
+                        controls: ["zoomControl", "geolocationControl", "rulerControl"]
+                    },
+                    {
+                        searchControlProvider: 'yandex#search'
+                    });
+
+                myMap.events.add('boundschange', function (event) {
+                    funcSearch();
                 });
 
-            myMap.events.add('boundschange', function (event) {
                 funcSearch();
+
             });
+        </script>
+        
+    </div>
+    <!-- /#page-content-wrapper -->
 
-            funcSearch();
+</div>
 
-        });
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
 </script>
