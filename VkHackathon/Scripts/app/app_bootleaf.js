@@ -23,6 +23,12 @@ $("#about-btn").click(function() {
   return false;
 });
 
+$("#places-list-btn").click(function () {
+    $("#placesListModal").modal("show");
+    //$(".navbar-collapse.in").collapse("hide");
+    return false;
+});
+
 $("#events-btn").click(function () {
     //$("#aboutModal").modal("show");
     $(".navbar-collapse.in").collapse("hide");
