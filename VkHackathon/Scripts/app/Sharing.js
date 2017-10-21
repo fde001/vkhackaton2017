@@ -24,6 +24,8 @@ function initializeSharing() {
 }
 
 function findUnknown(place, time) {
+
+    time = new Date(2017,1,1)
     VK.api("users.get",
         {
         },
@@ -38,10 +40,9 @@ function findUnknown(place, time) {
 }
 
 function createFriendsMessage(place, time, friends) {
-    var timeString = time.toString();
     var title = templates.FriendsChatTitle.replace("{{placeTitle}}", place.title).replace("{{time}}", timeString);
     var message = templates.FriendsChat.replace("{{placeTitle}}", place.title).replace("{{time}}").replace("{{url}}");
 
-    $.post('/Suggest/Friends', { time: timeString, title: title, friends: [901194] });
+    $.post('/Suggest/Friends', { time: ((time.getTime() * 10000) + 621355968000000000), title: title, friends: [901194] });
 }
 

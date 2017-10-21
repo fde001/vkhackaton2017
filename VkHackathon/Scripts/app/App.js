@@ -38,11 +38,12 @@ function funcSearch() {
                 $places.empty();
             }
 
+            $places.empty();
             for (var i = 0; i < places.length; i++) {
 
+                $places.append(`<tr id="${places[i].id}"> <td><img src="${places[i].photo}"></td><td><a target="_blank" href="${places[i].url}">${places[i].title}</a></td><td>${places[i].distance} м</td></tr>`);
                 if ($places.find('.' + places[i].id).length == 0) {
 
-                    $places.append(`<tr id="${places[i].id}"> <td><img src="${places[i].photo}"></td><td><a target="_blank" href="${places[i].url}">${places[i].title}</a></td><td>${places[i].distance} м</td></tr>`);
 
                     var placemark = new ymaps.Placemark([places[i].lat, places[i].lon],
                         {
