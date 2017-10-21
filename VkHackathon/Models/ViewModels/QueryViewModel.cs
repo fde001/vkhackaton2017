@@ -16,7 +16,7 @@ namespace VkHackathon.Models.ViewModels
         public string Icon { get; set; }                    
         public string Photo { get; set; }
         public string Description { get; set; }
-        public int Members { get; set; }
+        public double Rating { get; set; }
         public string Site { get; set; }
         
     }

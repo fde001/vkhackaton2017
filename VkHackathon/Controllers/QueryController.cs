@@ -40,7 +40,8 @@ namespace VkHackathon.Controllers
                 Lon = i.Longitude,
                 Title = i.FullName,
                 Site = i.Site,
-                Url = i.Url
+                Url = i.Url,
+                Rating = i.Rating + 0.001d
             })
             .ToListAsync();
             return

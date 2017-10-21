@@ -51,7 +51,7 @@ function findPlacesInVK(coordinates, count, radius, query, callback) {
                             icon: places[iCnt].icon,
                             photo: places[iCnt].group_photo,
                             description: grp.description,
-                            members: grp.members_count,
+                            rating: grp.members_count,
                             site: grp.site,
                             end: grp.finish_date ? new Date(parseInt(grp.finish_date)) : undefined,
                             start: grp.start_date ? new Date(parseInt(grp.start_date)) : undefined,
@@ -94,7 +94,7 @@ function findPlacesInDb(coordinates, radius, query, callback) {
                     distance: data[iCnt].Distance,
                     //photo: places[iCnt].group_photo,
                     description: data[iCnt].Description,
-                    //members: grp.members_count,
+                    rating: data[iCnt].Rating * 500,
                     site: data[iCnt].Site
                 });
             }

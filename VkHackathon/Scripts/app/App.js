@@ -25,7 +25,9 @@ function funcSearch() {
     findPlaces(center, radius, query,
         function (data) {
                      data = data || [];
-                     places = data;
+                     places = data.sort(function (a, b) {
+                         return a.rating = b.rating;
+                     }).slice(0,200);
 
             
 
