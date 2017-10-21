@@ -80,6 +80,8 @@ function funcSearch() {
                                 $("#placeModal").modal("hide");
                                 $("#attendModal #placeTitle").text(places[i].title);
 
+                                $('#datetimepicker1').datetimepicker();
+
                                 $("#friendsList").empty();
                                 friends.forEach(function (fr) {
                                     $("#friendsList").append(`<li class="list-group-item"><input id=${fr.uid} type="checkbox"><img src="${fr.photo}">${fr.first_name} ${fr.last_name}</li>`);
@@ -92,11 +94,11 @@ function funcSearch() {
                                         counter++;
                                     });
 
-                                    createFriendsMessage(places[i], new Date(), checkedItems);
+                                    createFriendsMessage(places[i], new Date($('#datetimepicker1>input').val()), checkedItems);
                                 });
 
                                 $('#finishRandomAttend').off("click").click(function () {
-                                   findUnknown(places[i], new Date());
+                                    findUnknown(places[i], new Date($('#datetimepicker1>input').val()));
                                 });
                                 $("#attendModal").data("place", places[i]).modal("show");
                                 return false;

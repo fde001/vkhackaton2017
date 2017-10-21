@@ -228,14 +228,20 @@
             </div>
             <div class="modal-body">
                 <div id="placeTitle"></div>
-            <div>
-                <ul class="list-group checked-list-box" id="friendsList"></ul>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="finishRandomAttend" data-dismiss="modal">Random</button>
-                <button type="button" class="btn btn-default" id="finishAttend" data-dismiss="modal">Finish</button>
-            </div>
-        </div><!-- /.modal-content -->
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                <div>
+                    <ul class="list-group checked-list-box" id="friendsList"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="finishRandomAttend" data-dismiss="modal">Random</button>
+                    <button type="button" class="btn btn-default" id="finishAttend" data-dismiss="modal">Finish</button>
+                </div>
+            </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <div class="modal fade" id="legendModal" tabindex="-1" role="dialog">
