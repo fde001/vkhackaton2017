@@ -209,6 +209,7 @@
     <Content Include="Scripts\app\harvesin.js" />
     <Content Include="Scripts\app\levenshtein.js" />
     <Content Include="Scripts\app\Places.js" />
+    <Content Include="Scripts\app\Sharing.js" />
     <Content Include="Scripts\app\Ticket.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />

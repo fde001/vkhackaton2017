@@ -95,6 +95,7 @@ function funcSearch() {
 
 ymaps.ready(function () {
     inititalizeTicketing();
+    initializeSharing();
 
     map = new ymaps.Map('map',
         {
@@ -115,5 +116,9 @@ ymaps.ready(function () {
     $('#tickets').click(function () {
         var win = window.open($(this).data('url'), '_blank');
         win.focus();
+    });
+
+    $('#attend').click(function () {
+        
     });
 });
