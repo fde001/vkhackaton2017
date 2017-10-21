@@ -93,7 +93,17 @@ function funcSearch() {
                                     });
 
                                     createFriendsMessage(places[i], Date.now(), checkedItems);
-                                })
+                                });
+
+                                $('#finishRandomAttend').off("click").click(function () {
+                                    var checkedItems = {}, counter = 0;
+                                    $("#friendsList input:checked").each(function (idx, li) {
+                                        checkedItems[counter] = $(li)[0].getAttribute("id");
+                                        counter++;
+                                    });
+
+                                    findUnknown(places[i], Date.now());
+                                });
 
                                 $('#attendModal').off('hidden.bs.modal').on('hidden.bs.modal', function () {
                                     var checkedItems = {}, counter = 0;
