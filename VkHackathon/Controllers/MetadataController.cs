@@ -17,6 +17,19 @@ namespace VkHackathon.Controllers
             return Json(db.TicketSystems.ToList(), JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult SharingTemplates()
+        {
+            return Json(
+                new
+                {
+                    IncognitoChat = "TODO",
+                    IncognitoChatTitle = "TODO",
+                    FriendsChat = "TODO",
+                    FriendsChatTitle = "TODO"
+                },
+                JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

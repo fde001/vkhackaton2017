@@ -1,7 +1,7 @@
 ﻿var map;
 var lastQuery = "";
 var places;
-var currentId = undefined;
+var currentPlace = undefined;
 
 
 //VK.callMethod("setTitle", "Changed title");
@@ -57,7 +57,7 @@ function funcSearch() {
                         placemark.events.add('click', function () {
 
                             //$("#placeModal .modal-title").text(places[i].title);
-                            currentId = ''+ places[i].id
+                            currentPlace = places[i];
 
                             $("#placeLink").attr("target", "_blank");
                             $("#placeLink").attr("href", places[i].url);
@@ -69,7 +69,7 @@ function funcSearch() {
                             else
                                 $("#placeImg").attr("src", places[i].photo).show();
 
-                            var ticketConfig = getTicketingConfiguration(currentId);
+                            var ticketConfig = getTicketingConfiguration('' + currentPlace.id);
                             if (!ticketConfig) $('#tickets').hide();
                             else {
                                 $('#tickets').show();
@@ -111,6 +111,9 @@ ymaps.ready(function () {
         funcSearch();
     });
 
+   
+
+
     funcSearch();
 
     $('#tickets').click(function () {
@@ -119,6 +122,6 @@ ymaps.ready(function () {
     });
 
     $('#attend').click(function () {
-        
+        findUnknown(currentPlace, new Date());
     });
 });
