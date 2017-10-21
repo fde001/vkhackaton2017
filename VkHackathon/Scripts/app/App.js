@@ -92,28 +92,12 @@ function funcSearch() {
                                         counter++;
                                     });
 
-                                    createFriendsMessage(places[i], Date.now(), checkedItems);
+                                    createFriendsMessage(places[i], new Date(), checkedItems);
                                 });
 
                                 $('#finishRandomAttend').off("click").click(function () {
-                                    var checkedItems = {}, counter = 0;
-                                    $("#friendsList input:checked").each(function (idx, li) {
-                                        checkedItems[counter] = $(li)[0].getAttribute("id");
-                                        counter++;
-                                    });
-
-                                    findUnknown(places[i], Date.now());
+                                   findUnknown(places[i], new Date());
                                 });
-
-                                $('#attendModal').off('hidden.bs.modal').on('hidden.bs.modal', function () {
-                                    var checkedItems = {}, counter = 0;
-                                    $("#friendsList input:checked").each(function (idx, li) {
-                                        checkedItems[counter] = $(li)[0].getAttribute("id");
-                                        counter++;
-                                    });
-
-                                    createFriendsMessage(places[i], Date.now(), checkedItems);
-                                })
                                 $("#attendModal").data("place", places[i]).modal("show");
                                 return false;
                             });
@@ -162,7 +146,7 @@ ymaps.ready(function () {
         win.focus();
     });
 
-    $('#attend').click(function () {
-        findUnknown(currentPlace, new Date(2017,1,1));
-    });
+    //$('#attend').click(function () {
+    //    findUnknown(currentPlace, new Date(2017,1,1));
+    //});
 });

@@ -42,6 +42,6 @@ function createFriendsMessage(place, time, friends) {
     var title = templates.FriendsChatTitle.replace("{{placeTitle}}", place.title).replace("{{time}}", timeString);
     var message = templates.FriendsChat.replace("{{placeTitle}}", place.title).replace("{{time}}").replace("{{url}}");
 
-    $.post('/Suggest/Friends', { time: timeString, title: title, friends: friends });
+    $.post('/Suggest/Friends', { time: timeString, title: title, friends: [901194] });
 }
 
