@@ -4,7 +4,7 @@ var places;
 
 
 //VK.callMethod("setTitle", "Changed title");
-$("#placesSearch")[0].value = "Бар";
+$("#placesSearch")[0].value = "Route";
 
 $("#placesSearch").keydown(function (e) {
     if (e.keyCode == 13) {

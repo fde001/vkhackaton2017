@@ -30,6 +30,10 @@ function findPlacesInVK(coordinates, count, radius, query, callback) {
             VK.api("groups.getById", {
                 group_ids: ids, fields: [  'is_closed', 'deactivated', 'is_member', 'members_count', 'type', 'description', 'site', 'start_date', 'finish_date', 'verified'] },
                 function (data) {
+                    if (!data && !data.response) {
+                        callback(result);
+                        return; 
+                    }
                     var groups = data.response.filter(x => x.deactivated == undefined &&
                         (x.is_closed == 0 || x.is_member == 1))
 
