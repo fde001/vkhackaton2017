@@ -5,10 +5,11 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <div class="navbar-icon-container">
-                <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
+                <a href="#" class="navbar-icon pull-left visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
+                <a href="#" class="navbar-icon pull-right visible-xs" id="places-list-btn"><i class="fa fa-list fa-lg white"></i></a>
                 @*<a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>*@
             </div>
-            <a class="navbar-brand" href="#">Places</a>
+            @*<a class="navbar-brand" href="#">Places</a>*@
             <input id="placesSearch" name="q" type="text" placeholder="Search" class="form-control" onsearch="funcSearch()">
         </div>
         <div class="navbar-collapse collapse">
@@ -20,6 +21,13 @@
             </form>*@
             <ul class="nav navbar-nav">
                 @*<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;About</a></li>*@
+                <li class="dropdown">
+                    <a id="myEventsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Мои мероприятия <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Event</a></li>
+                        <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Event</a></li>
+                    </ul>
+                </li>
                 <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="events-btn"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Мероприятия</a></li>
                 @*<li class="dropdown">
                     <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Мероприятия <b class="caret"></b></a>
@@ -203,6 +211,22 @@
                 <div>
                     <button class="btn btn-primary" type="button" data-dismiss="modal" aria-hidden="true">Пригласить</button>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal fade" id="placesListModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Places</h4>
+            </div>
+            <div class="modal-body">
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
