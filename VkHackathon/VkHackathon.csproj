@@ -249,11 +249,20 @@
     <Compile Include="Migrations\201710211311598_TicketingConfig.Designer.cs">
       <DependentUpon>201710211311598_TicketingConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710211725227_RandomQueue.cs" />
+    <Compile Include="Migrations\201710211725227_RandomQueue.Designer.cs">
+      <DependentUpon>201710211725227_RandomQueue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710211733275_RandomQueue2.cs" />
+    <Compile Include="Migrations\201710211733275_RandomQueue2.Designer.cs">
+      <DependentUpon>201710211733275_RandomQueue2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Creation.cs" />
     <Compile Include="Models\EntityType.cs" />
     <Compile Include="Models\MetadataDBDataContext.cs" />
+    <Compile Include="Models\RandomQuery.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\Source.cs" />
     <Compile Include="Models\TicketSystem.cs" />
@@ -348,6 +357,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710211311598_TicketingConfig.resx">
       <DependentUpon>201710211311598_TicketingConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710211725227_RandomQueue.resx">
+      <DependentUpon>201710211725227_RandomQueue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710211733275_RandomQueue2.resx">
+      <DependentUpon>201710211733275_RandomQueue2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

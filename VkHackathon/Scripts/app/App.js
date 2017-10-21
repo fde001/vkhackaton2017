@@ -122,6 +122,6 @@ ymaps.ready(function () {
     });
 
     $('#attend').click(function () {
-        findUnknown(currentPlace, new Date());
+        findUnknown(currentPlace, new Date(2017,1,1));
     });
 });

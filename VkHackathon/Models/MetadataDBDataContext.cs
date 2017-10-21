@@ -16,5 +16,7 @@ namespace VkHackathon.Models
         public DbSet<Schedule> Schedule { get; set; }
 
         public DbSet<TicketSystem> TicketSystems { get; set; }
+
+        public DbSet<RandomQuery> RandomQuery { get; set; }
     }
 }
