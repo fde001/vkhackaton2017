@@ -55,11 +55,12 @@ function funcSearch() {
                     function addPlaceClick(i) {
                         placemark.events.add('click', function () {
 
-                            $("#placeModal .modal-title").text(places[i].title);
+                            //$("#placeModal .modal-title").text(places[i].title);
 
-                            $("#placeLink").attr("href", places[i].url);
                             $("#placeLink").attr("target", "_blank");
+                            $("#placeLink").attr("href", places[i].url);
                             $("#placeLink").text(places[i].title);
+                            $("#placeDesc").html(places[i].description);
 
                             if (!places[i].photo || places[i].photo == '') 
                                 $("#placeImg").hide();

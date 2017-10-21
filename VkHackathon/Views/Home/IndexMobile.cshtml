@@ -96,7 +96,6 @@
 
     <div id="map" style="margin-top: 20px;"></div>
 
-    <div id="vk_comments"></div>
 
     <table id="places" style="width:100%"></table>
 </div>
@@ -204,13 +203,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Welcome to the BootLeaf template!</h4>
+                <h4 class="modal-title"><a id="placeLink"></a></h4>
             </div>
             <div class="modal-body">
-                <img id="placeImg"><a id="placeLink"></a>
+                <img id="placeImg" class="pull-left">
                 <div>
-                    <button class="btn btn-primary" type="button" data-dismiss="modal" aria-hidden="true">Пригласить</button>
+                    <button class="btn btn-primary pull-right" type="button" data-dismiss="modal" aria-hidden="true">Пригласить</button>
                 </div>
+                <div id="placeDesc"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
