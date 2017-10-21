@@ -159,12 +159,25 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QueryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201710201955467_EventsStructure.cs" />
     <Compile Include="Migrations\201710201955467_EventsStructure.Designer.cs">
       <DependentUpon>201710201955467_EventsStructure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710210546574_Sources.cs" />
+    <Compile Include="Migrations\201710210546574_Sources.Designer.cs">
+      <DependentUpon>201710210546574_Sources.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710210611599_MissingFields1.cs" />
+    <Compile Include="Migrations\201710210611599_MissingFields1.Designer.cs">
+      <DependentUpon>201710210611599_MissingFields1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710210824144_CompanyIndexes.cs" />
+    <Compile Include="Migrations\201710210824144_CompanyIndexes.Designer.cs">
+      <DependentUpon>201710210824144_CompanyIndexes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Company.cs" />
@@ -173,6 +186,7 @@
     <Compile Include="Models\MetadataDBDataContext.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\Source.cs" />
+    <Compile Include="Models\ViewModels\QueryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -237,6 +252,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710201955467_EventsStructure.resx">
       <DependentUpon>201710201955467_EventsStructure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710210546574_Sources.resx">
+      <DependentUpon>201710210546574_Sources.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710210611599_MissingFields1.resx">
+      <DependentUpon>201710210611599_MissingFields1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710210824144_CompanyIndexes.resx">
+      <DependentUpon>201710210824144_CompanyIndexes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
