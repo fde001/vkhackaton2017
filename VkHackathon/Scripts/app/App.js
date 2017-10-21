@@ -83,6 +83,8 @@ function funcSearch() {
 
 
 ymaps.ready(function () {
+    inititalizeTicketing();
+
     map = new ymaps.Map('map',
         {
             center: [59.935634, 30.325935],

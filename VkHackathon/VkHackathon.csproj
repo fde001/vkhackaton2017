@@ -160,6 +160,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QueryController.cs" />
+    <Compile Include="Controllers\MetadataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,6 +180,10 @@
     <Compile Include="Migrations\201710210824144_CompanyIndexes.Designer.cs">
       <DependentUpon>201710210824144_CompanyIndexes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710211311598_TicketingConfig.cs" />
+    <Compile Include="Migrations\201710211311598_TicketingConfig.Designer.cs">
+      <DependentUpon>201710211311598_TicketingConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Creation.cs" />
@@ -186,6 +191,7 @@
     <Compile Include="Models\MetadataDBDataContext.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\Source.cs" />
+    <Compile Include="Models\TicketSystem.cs" />
     <Compile Include="Models\ViewModels\QueryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -203,6 +209,7 @@
     <Content Include="Scripts\app\harvesin.js" />
     <Content Include="Scripts\app\levenshtein.js" />
     <Content Include="Scripts\app\Places.js" />
+    <Content Include="Scripts\app\Ticket.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -242,6 +249,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
+    <Folder Include="Views\Ticketing\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -268,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710210824144_CompanyIndexes.resx">
       <DependentUpon>201710210824144_CompanyIndexes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710211311598_TicketingConfig.resx">
+      <DependentUpon>201710211311598_TicketingConfig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
