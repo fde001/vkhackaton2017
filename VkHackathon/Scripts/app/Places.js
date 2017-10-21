@@ -17,6 +17,12 @@ function findPlacesInVK(coordinates, count, radius, query, callback) {
 
         function (data) {
             var result = [];
+
+            if (!data.response || data.response[0] == 0) {
+                callback(result);
+                return;
+            }
+
             var places = data.response.filter(x => x.distance < radius && x.group_id).sort((a, b) => a.distance - b.distance);
 
             var ids = places.map(function (p) { return p.group_id; }).join();

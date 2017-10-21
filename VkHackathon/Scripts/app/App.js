@@ -2,11 +2,14 @@
 var lastQuery="";
 
 
-VK.callMethod("setTitle", "Changed title");
+//VK.callMethod("setTitle", "Changed title");
 $("#placesSearch")[0].value = "Бар";
 
-
-
+$("#placesSearch").keydown(function (e) {
+    if (e.keyCode == 13) {
+    funcSearch();
+    }
+});
 
 function funcSearch() {
 
@@ -21,6 +24,7 @@ function funcSearch() {
     findPlacesInVK(center, 400, radius, query,
         function (data) {
 
+            data = data || [];
             var places = data.filter(x => x.photo != null &&
                 ((x.start && x.end && x.end > new Date()) ||
                     (x.start && !x.end && x.end > new Date()) ||

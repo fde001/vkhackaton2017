@@ -6,6 +6,12 @@ html, body, #container {
 body {
   padding-top: 50px;
 }
+
+.navbar-inverse {
+    background-color: #507299;
+    border-color: #080808;
+}
+
 input[type="radio"], input[type="checkbox"] {
   margin: 0;
 }
