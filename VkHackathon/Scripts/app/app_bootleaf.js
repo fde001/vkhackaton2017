@@ -23,8 +23,16 @@ $("#about-btn").click(function() {
   return false;
 });
 
+$("#places").hide();
 $("#places-list-btn").click(function () {
-    $("#placesListModal").modal("show");
+    if ($("#places").is(":visible"))
+    {
+        $("#map").show();
+        $("#places").hide();
+    } else {
+        $("#map").hide();
+        $("#places").show();
+    }
     //$(".navbar-collapse.in").collapse("hide");
     return false;
 });
