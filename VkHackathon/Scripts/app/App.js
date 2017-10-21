@@ -20,17 +20,14 @@ function funcSearch() {
 
     var center = map.getCenter();
     var bounds = map.getBounds();
-    var radius = ymaps.coordSystem.geo.getDistance(center, bounds[0]) / 1.5;
+    var radius = ymaps.coordSystem.geo.getDistance(center, bounds[0]);
 
-    findPlacesInVK(center, 400, radius, query,
+    findPlaces(center, radius, query,
         function (data) {
+                     data = data || [];
+                     places = data;
 
-            data = data || [];
-            places = data.filter(x => x.photo != null &&
-                ((x.start && x.end && x.end > new Date()) ||
-                    (x.start && !x.end && x.end > new Date()) ||
-                    (!x.start && !x.end))
-            );
+            
 
             var $places = $("#places");
             if (query != lastQuery) {
@@ -62,7 +59,10 @@ function funcSearch() {
                             $("#placeLink").attr("target", "_blank");
                             $("#placeLink").text(places[i].title);
 
-                            $("#placeImg").attr("src", places[i].photo);
+                            if (!places[i].photo || places[i].photo == '') 
+                                $("#placeImg").hide();
+                            else
+                                $("#placeImg").attr("src", places[i].photo).show();
 
                             $("#placeModal").modal("show");
                         });

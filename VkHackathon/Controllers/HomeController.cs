@@ -10,7 +10,7 @@ namespace VkHackathon.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("IndexMobile");
         }
 
         public ActionResult IndexMobile()
