@@ -13,7 +13,7 @@ function initializeSharing() {
                     uid: data.response[iF].uid,
                     first_name: data.response[iF].first_name,
                     last_name: data.response[iF].last_name,
-                    photo: data.response[iF].photo_50,
+                    photo: data.response[iF].photo_50
                 });
             }
         });
@@ -42,6 +42,6 @@ function createFriendsMessage(place, time, friends) {
     var title = templates.FriendsChatTitle.replace("{{placeTitle}}", place.title).replace("{{time}}", timeString);
     var message = templates.FriendsChat.replace("{{placeTitle}}", place.title).replace("{{time}}").replace("{{url}}");
 
-    $.post('/Suggest/Friends', { friends: friends, title: title, message: message });
+    $.post('/Suggest/Friends', { time: timeString, title: title, friends: friends });
 }
 

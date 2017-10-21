@@ -76,6 +76,37 @@ function funcSearch() {
                                 $('#tickets').data('url', ticketConfig.Url);
                             }
 
+                            $("#attend").click(function () {
+                                $("#placeModal").modal("hide");
+                                $("#attendModal #placeTitle").text(places[i].title);
+
+                                $("#friendsList").empty();
+                                friends.forEach(function (fr) {
+                                    $("#friendsList").append(`<li class="list-group-item"><input id=${fr.uid} type="checkbox"><img src="${fr.photo}">${fr.first_name} ${fr.last_name}</li>`);
+                                });
+
+                                $('#finishAttend').off("click").click(function () {
+                                    var checkedItems = {}, counter = 0;
+                                    $("#friendsList input:checked").each(function (idx, li) {
+                                        checkedItems[counter] = $(li)[0].getAttribute("id");
+                                        counter++;
+                                    });
+
+                                    createFriendsMessage(places[i], Date.now(), checkedItems);
+                                })
+
+                                $('#attendModal').off('hidden.bs.modal').on('hidden.bs.modal', function () {
+                                    var checkedItems = {}, counter = 0;
+                                    $("#friendsList input:checked").each(function (idx, li) {
+                                        checkedItems[counter] = $(li)[0].getAttribute("id");
+                                        counter++;
+                                    });
+
+                                    createFriendsMessage(places[i], Date.now(), checkedItems);
+                                })
+                                $("#attendModal").data("place", places[i]).modal("show");
+                                return false;
+                            });
 
                             $("#placeModal").modal("show");
                         });
